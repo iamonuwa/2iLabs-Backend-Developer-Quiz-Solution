@@ -58,7 +58,9 @@ module.exports.policies = {
   },
 
   'QuizController': {
-    
+    'create': ['isAuthorized'],
+    'update': ['isAuthorized'],
+    'index': ['isAuthorized'],
   },
   'QuestionsController': {
     'create': ['isAuthorized'],
