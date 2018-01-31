@@ -10,7 +10,8 @@ module.exports = {
   attributes: {
   	title: {
   		type: 'string',
-  		unique: true
+  		unique: true,
+      required: true
   	},
   	description: {
   		type: 'string',
@@ -18,6 +19,10 @@ module.exports = {
   	author: {
   		model: 'Users'
   	},
+    question: {
+      model: 'Questions',
+      required: true
+    },
   	type: {
   		type: 'string'
   	}

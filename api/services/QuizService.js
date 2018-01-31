@@ -21,6 +21,14 @@ module.exports = {
 			})
 	},
 
+	create: (data, callback) => {
+		Quiz.create(data).then((response) => {
+			callback(null, response);
+		}).catch((err) => {
+			callback(err, null);
+		})
+	},
+
 	update: (question, callback) => {
 		Quiz.update({
 			id: question.id

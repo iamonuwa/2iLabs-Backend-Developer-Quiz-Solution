@@ -25,6 +25,10 @@ module.exports = {
   	author: {
   		model: 'Users'
   	},
+  	quiz: {
+  		collection: 'Quiz',
+  		via: 'question',
+  	}
   }
 };
 

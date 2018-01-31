@@ -22,6 +22,7 @@ module.exports = {
 		let allowedParamters = [
 			'title',
 			'description',
+			'question'
 		];
 
 		let data = _.pick(req.body, allowedParamters);
