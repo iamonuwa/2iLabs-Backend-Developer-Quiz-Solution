@@ -5,17 +5,6 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-let image = require('../helpers/image');
-let sid = require('shortid');
-let fs = require('fs');
-let mkdirp = require('mkdirp');
-
-let UPLOAD_PATH = 'public/images';
-
-// Setup id generator
-sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
-sid.seed(42);
-
 module.exports = {
 
     login: (req, res) => {
