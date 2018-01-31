@@ -8,6 +8,7 @@
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.1",
     "include-all": "^1.0.0",
+    "jsonwebtoken": "^8.1.1",
     "rc": "1.0.1",
     "sails": "~0.12.14",
     "sails-disk": "~0.10.9",
