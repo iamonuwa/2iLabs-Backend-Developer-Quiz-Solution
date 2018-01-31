@@ -48,4 +48,16 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+
+  'UsersController': {
+    'login': [],
+    'create': [],
+    'update': ['isAuthorized'],
+    'destroy': ['isAuthorized'],
+    'find': ['isAuthorized'],
+  },
+
+  'QuizController': {
+    
+  }
 };

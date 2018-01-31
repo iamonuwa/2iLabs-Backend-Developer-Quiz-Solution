@@ -34,23 +34,24 @@ module.exports = {
     fullname: {
     	type: 'string',
     },
-    toJSON: () => {
+    toJSON: function () {
     	let obj = this.toObject();
     	delete obj.password;
+        return obj;
     }
   },
 
-	beforeCreate: function(values, cb){
-	        bcrypt.hash(values.password, 10, function (err, hash) {
+	beforeCreate: (values, cb) => {
+	        bcrypt.hash(values.password, 10, (err, hash) => {
 	    	if (err) return cb(err);
 	    	values.password = hash;
 	      	cb();
     	});
     },
 
-    comparePassword: function(password, user) {
-        return new bluebird(function (resolve, reject) {
-	      bcrypt.compare(password, user.password, function (err, match) {
+    comparePassword: (password, user) => {
+        return new bluebird((resolve, reject) => {
+	      bcrypt.compare(password, user.password, (err, match) => {
 	        if (err) reject(err);
 
 	        if (match) {

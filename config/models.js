@@ -17,7 +17,7 @@ module.exports.models = {
   * connections (see `config/connections.js`)                                *
   *                                                                          *
   ***************************************************************************/
-  connection: 'twoiLabs_app',
+  connection: 'mongoDB',
 
   /***************************************************************************
   *                                                                          *
