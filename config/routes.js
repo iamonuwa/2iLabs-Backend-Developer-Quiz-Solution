@@ -48,7 +48,6 @@ module.exports.routes = {
 
   'GET /users': 'UsersController.index',
   'GET /users/:id': 'UsersController.find',
-  'POST /users': 'UsersController.create',
   'PATCH /users/:id': 'UsersController.update',
   'DELETE /users/:id': 'UsersController.destroy',
   'POST /users/upload': 'UsersController.uploadPhoto',
@@ -66,5 +65,6 @@ module.exports.routes = {
   'DELETE /quiz/:id': 'QuizController.destroy',
 
 
-  'POST /login': 'UsersController.login'
+  'POST /login': 'UsersController.login',
+  'POST /register': 'UsersController.create',
 };
