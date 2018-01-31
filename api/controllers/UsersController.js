@@ -4,7 +4,12 @@
  * @description :: Server-side logic for managing Users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+let cloudinary = require('cloudinary');
+cloudinary.config({ 
+  cloud_name: process.env.CLOUD_NAME || 'iamonuwa', 
+  api_key: process.env.API_KEY || '489826285522172', 
+  api_secret: process.env.API_SECRET || '' 
+});
 module.exports = {
 
     login: (req, res) => {
@@ -160,18 +165,20 @@ module.exports = {
         data = {};
         
         let file = req.file('avatar');
-        file.upload({
-            dirname: '../../uploads/photos',
-        }, function onUploadComplete (err, uploadedFile) {
+        file.upload((err, uploadedFile) => {
                 if(err) return res.serverError(err);
-                data.id = req.current_user.id;
-                data.avatar = uploadedFile[0].fd;
-                UserService.updateUser(data, (error, updatedUser) => {
-                    if(error) return res.serverError(err);
-                    if (updatedUser) {
-                        return res.ok(updatedUser);
-                    }
-                })
+                let avatar = uploadedFile[0].fd;
+                cloudinary.uploader.upload(avatar, (result) => {
+                    console.log(result);
+                    data.avatar = result.url;
+                    data.id = req.current_user.id;
+                    UserService.updateUser(data, (error, updatedUser) => {
+                        if(error) return res.serverError(err);
+                        if (updatedUser) {
+                            return res.ok(updatedUser);
+                        }
+                    })
+                });
             })
      }
 };
