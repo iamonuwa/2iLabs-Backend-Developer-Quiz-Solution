@@ -17,20 +17,19 @@ module.exports = {
             'email',
             'password'
         ];
-
         let data = _.pick(req.body, allowedParameters);
         UserService.singleUserEmail(data.email, (err, foundUser) => {
             if(err) return res.notFound(err);
-                if(foundUser) {
-                    UserService.login(data, foundUser, (err, loginResponse) => {
-                        if(err) return res.badRequest(err);
-                        if (loginResponse.hasOwnProperty('user') && loginResponse.hasOwnProperty('token')) {
-                            return res.ok(loginResponse, "Login Successful");
-                        } else {
-                            return res.serverError('Internal Server Error');
-                        }
-                    })        
-                }
+            if(foundUser) {
+                UserService.login(data, foundUser, (err, loginResponse) => {
+                    if(err) return res.badRequest(err);
+                    if (loginResponse.hasOwnProperty('user') && loginResponse.hasOwnProperty('token')) {
+                        return res.ok(loginResponse, "Login Successful");
+                    } else {
+                        return res.serverError('Internal Server Error');
+                    }
+                })        
+            }
         })
     },
     
@@ -44,30 +43,24 @@ module.exports = {
 
      index: (req, res) => {
         UserService.allUsers((err, foundUsers) => {
-            if(err) {
-            	return res.notFound(err);
+            if(err) return res.notFound(err);
+            if (foundUsers.length > 0) {
+                return res.ok(foundUsers, 'Data retrieved successfully');
             } else {
-	            if (foundUsers.length > 0) {
-	                return res.ok(foundUsers, 'Data retrieved successfully');
-	            } else {
-	            	return res.notFound('No User Found');
-	            }
-	        }
+            	return res.notFound('No User Found');
+            }
         })
      },
 
      find: (req, res) => {
      	let user = req.param('id');
         UserService.singleUser(user, (err, foundUser) => {
-            if(err) {
-            	return res.notFound(err);
+            if(err) return res.notFound(err);
+            if (typeof foundUser != 'undefined' && foundUser.hasOwnProperty('email')) {
+                return res.ok(foundUser, 'Data retrieved successfully');
             } else {
-	            if (typeof foundUser != 'undefined' && foundUser.hasOwnProperty('email')) {
-	                return res.ok(foundUser, 'Data retrieved successfully');
-	            } else {
-	            	return res.notFound('User not found');
-	            }
-	        }
+            	return res.notFound('User not found');
+            }
         })
      },
 
@@ -90,14 +83,11 @@ module.exports = {
         let data = _.pick(req.body, allowedParameters);
         data.fullname = `${ data.lastname } ${ data.firstname }`;
         UserService.createUser(data, (err, createdUser) => {
-            if(err) {
-                return res.badRequest(err);
+            if(err) return res.badRequest(err);
+            if (createdUser.hasOwnProperty('email')) {
+                return res.ok(createdUser, "Account creation successful");
             } else {
-                if (createdUser.hasOwnProperty('email')) {
-                    return res.ok(createdUser, "Account creation successful");
-                } else {
-                    return res.serverError('Internal Server Error');
-                }
+                return res.serverError('Internal Server Error');
             }
         })
      },
