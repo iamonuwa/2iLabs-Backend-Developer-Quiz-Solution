@@ -21,6 +21,14 @@ module.exports = {
 			})
 	},
 
+	create: (question, callback) => {
+		Questions.create(question).then((response) => {
+			callback(null, response);
+		}).catch((err) => {
+			callback(err, null);
+		})
+	},
+
 	update: (question, callback) => {
 		Questions.update({
 			id: question.id

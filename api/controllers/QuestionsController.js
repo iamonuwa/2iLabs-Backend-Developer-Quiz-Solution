@@ -10,7 +10,7 @@ module.exports = {
 	index: (req, res) => {
 		QuestionService.listAll((err, foundQuestions) => {
 			if(err) return res.notFound(err);
-			if(foundQuestions.lenth > 0) {
+			if(foundQuestions.length > 0) {
 				return res.ok(foundQuestions);
 			} else {
 				return res.notFound('No Question(s) Found')
