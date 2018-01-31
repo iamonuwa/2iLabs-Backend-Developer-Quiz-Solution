@@ -7,7 +7,7 @@
 let cloudinary = require('cloudinary');
 cloudinary.config({ 
   cloud_name: process.env.CLOUD_NAME || 'iamonuwa', 
-  api_key: process.env.API_KEY || '489826285522172', 
+  api_key: process.env.API_KEY || '', 
   api_secret: process.env.API_SECRET || '' 
 });
 module.exports = {
