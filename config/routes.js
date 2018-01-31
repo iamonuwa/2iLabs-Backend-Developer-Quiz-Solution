@@ -53,11 +53,11 @@ module.exports.routes = {
   'DELETE /users/:id': 'UsersController.destroy',
   'POST /users/upload': 'UsersController.uploadPhoto',
 
-  'GET /questions': 'QuestionsController.index',
-  'GET /questions/:id': 'QuestionsController.find',
-  'POST /questions': 'QuestionsController.create',
-  'PATCH /questions/:id': 'QuestionsController.update',
-  'DELETE /questions/:id': 'QuestionsController.destroy',
+  'GET /topics': 'TopicsController.index',
+  'GET /topics/:id': 'TopicsController.find',
+  'POST /topics': 'TopicsController.create',
+  'PATCH /topics/:id': 'TopicsController.update',
+  'DELETE /topics/:id': 'TopicsController.destroy',
 
   'GET /quiz': 'QuizController.index',
   'GET /quiz/:id': 'QuizController.find',

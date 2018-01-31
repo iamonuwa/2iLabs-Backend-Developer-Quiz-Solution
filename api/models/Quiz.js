@@ -19,8 +19,8 @@ module.exports = {
   	author: {
   		model: 'Users'
   	},
-    question: {
-      model: 'Questions',
+    topic: {
+      model: 'Topics',
       required: true
     },
   	type: {

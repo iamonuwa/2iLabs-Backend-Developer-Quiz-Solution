@@ -22,14 +22,14 @@ module.exports = {
 		let allowedParamters = [
 			'title',
 			'description',
-			'question'
+			'topic'
 		];
 
 		let data = _.pick(req.body, allowedParamters);
 		data.author = req.current_user;
-		QuestionService.listOne(data.question, (err, foundQuestion) => {
+		TopicService.listOne(data.topic, (err, foundTopic) => {
 			if(err) return res.notFound(err);
-			if(typeof foundQuestion != 'undefined' && foundQuestion.hasOwnProperty('title')) {
+			if(typeof foundTopic != 'undefined' && foundTopic.hasOwnProperty('title')) {
 				QuizService.create(data, (err, createdQuiz) => {
 					if(err) return res.badRequest(err);
 					if (typeof createdQuiz != 'undefined' && createdQuiz.hasOwnProperty('title')) {
@@ -39,7 +39,7 @@ module.exports = {
 					}
 				})
 			} else {
-				return res.notFound('Question does not exist');
+				return res.notFound('Topic does not exist');
 			}
 		})
 	},
@@ -48,24 +48,32 @@ module.exports = {
 		let allowedParamters = [
 			'title',
 			'description',
+			'topic'
 		];
 
 		let data = _.pick(req.body, allowedParamters);
 		data.author = req.current_user;
 		data.id = req.param.id;
-		QuizService.listOne(id, (err, foundQuiz) => {
+		TopicService.listOne(data.topic, (err, foundTopic) => {
 			if(err) return res.notFound(err);
-			if(typeof foundQuiz != 'undefined' && foundQuiz.hasOwnProperty('title')) {
-				QuizService.update(data, (err, updatedQuiz) => {
-					if(err) return res.badRequest(err);
-					if (updatedQuiz.hasOwnProperty('title')) {
-						return res.created(updatedQuiz);
-					} else {
-						return res.serverError('Internal Server Error');
+			if(typeof foundTopic != 'undefined' && foundTopic.hasOwnProperty('title')) {
+				QuizService.listOne(id, (err, foundQuiz) => {
+					if(err) return res.notFound(err);
+					if(typeof foundQuiz != 'undefined' && foundQuiz.hasOwnProperty('title')) {
+						QuizService.update(data, (err, updatedQuiz) => {
+							if(err) return res.badRequest(err);
+							if (updatedQuiz.hasOwnProperty('title')) {
+								return res.created(updatedQuiz);
+							} else {
+								return res.serverError('Internal Server Error');
+							}
+						})
 					}
 				})
+			} else {
+				return res.notFound('Topic does not exist');
 			}
-		})
+		});
 	},
 
 	destroy: (req, res) => {

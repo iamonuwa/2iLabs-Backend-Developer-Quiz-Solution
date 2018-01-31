@@ -50,8 +50,7 @@ module.exports.policies = {
 	// }
 
   'UsersController': {
-    'login': [],
-    'create': [],
+    'index': ['isAuthorized'],
     'update': ['isAuthorized'],
     'destroy': ['isAuthorized'],
     'find': ['isAuthorized'],
@@ -63,7 +62,7 @@ module.exports.policies = {
     'update': ['isAuthorized'],
     'index': ['isAuthorized'],
   },
-  'QuestionsController': {
+  'TopicsController': {
     'create': ['isAuthorized'],
     'update': ['isAuthorized'],
     'index': ['isAuthorized'],

@@ -1,7 +1,7 @@
 module.exports = {
 
 	listAll: (callback) => {
-		Questions.find()
+		Topics.find()
 			.populateAll()
 			.then((response) => {
 				callback(null, response);
@@ -11,7 +11,7 @@ module.exports = {
 	},
 
 	listOne: (question, callback) => {
-		Questions.findOne({
+		Topics.findOne({
 			id: question
 		}).populateAll()
 			.then((response) => {
@@ -22,7 +22,7 @@ module.exports = {
 	},
 
 	create: (question, callback) => {
-		Questions.create(question).then((response) => {
+		Topics.create(question).then((response) => {
 			callback(null, response);
 		}).catch((err) => {
 			callback(err, null);
@@ -30,7 +30,7 @@ module.exports = {
 	},
 
 	update: (question, callback) => {
-		Questions.update({
+		Topics.update({
 			id: question.id
 		}, question).then((response) => {
 			callback(null, response);
@@ -40,7 +40,7 @@ module.exports = {
 	},
 
 	destroy: (question, callback) => {
-		Questions.destroy({
+		Topics.destroy({
 			id: question
 		}).then((response) => {
 			callback(null, true);
