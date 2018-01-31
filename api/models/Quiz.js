@@ -8,7 +8,19 @@
 module.exports = {
 
   attributes: {
-
+  	title: {
+  		type: 'string',
+  		unique: true
+  	},
+  	description: {
+  		type: 'string',
+  	},
+  	author: {
+  		model: 'Users'
+  	},
+  	type: {
+  		type: 'string'
+  	}
   }
 };
 

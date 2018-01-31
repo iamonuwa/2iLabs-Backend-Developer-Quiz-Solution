@@ -7,5 +7,20 @@
 
 module.exports = {
 	
+	index: (req, res) => {
+
+	},
+
+	create: (req, res) => {
+
+	}, 
+
+	update: (req, res) => {
+
+	},
+
+	destroy: (req, res) => {
+		
+	}
 };
 
