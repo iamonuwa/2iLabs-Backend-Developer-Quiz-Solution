@@ -58,6 +58,12 @@ module.exports.routes = {
   'PATCH /questions/:id': 'QuestionsController.update',
   'DELETE /questions/:id': 'QuestionsController.destroy',
 
+  'GET /quiz': 'QuizController.index',
+  'GET /quiz/:id': 'QuizController.find',
+  'POST /quiz': 'QuizController.create',
+  'PATCH /quiz/:id': 'QuizController.update',
+  'DELETE /quiz/:id': 'QuizController.destroy',
+
 
   'POST /login': 'UsersController.login'
 };
