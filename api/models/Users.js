@@ -34,6 +34,9 @@ module.exports = {
     fullname: {
     	type: 'string',
     },
+    avatar: {
+        type: 'string'
+    },
     toJSON: function () {
     	let obj = this.toObject();
     	delete obj.password;

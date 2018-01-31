@@ -51,6 +51,7 @@ module.exports.routes = {
   'POST /users': 'UsersController.create',
   'PATCH /users/:id': 'UsersController.update',
   'DELETE /users/:id': 'UsersController.destroy',
+  'POST /users/upload': 'UsersController.uploadPhoto',
 
   'GET /questions': 'QuestionsController.index',
   'GET /questions/:id': 'QuestionsController.find',

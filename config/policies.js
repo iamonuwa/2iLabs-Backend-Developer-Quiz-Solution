@@ -55,6 +55,7 @@ module.exports.policies = {
     'update': ['isAuthorized'],
     'destroy': ['isAuthorized'],
     'find': ['isAuthorized'],
+    'uploadPhoto': ['isAuthorized'],
   },
 
   'QuizController': {

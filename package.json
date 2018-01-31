@@ -9,10 +9,12 @@
     "bluebird": "^3.5.1",
     "include-all": "^1.0.0",
     "jsonwebtoken": "^8.1.1",
+    "mkdirp": "^0.5.1",
     "rc": "1.0.1",
     "sails": "~0.12.14",
     "sails-disk": "~0.10.9",
-    "sails-mongo": "^0.12.2"
+    "sails-mongo": "^0.12.2",
+    "shortid": "^2.2.8"
   },
   "scripts": {
     "debug": "node debug app.js",

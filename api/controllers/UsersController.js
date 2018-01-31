@@ -5,6 +5,17 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+let image = require('../helpers/image');
+let sid = require('shortid');
+let fs = require('fs');
+let mkdirp = require('mkdirp');
+
+let UPLOAD_PATH = 'public/images';
+
+// Setup id generator
+sid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
+sid.seed(42);
+
 module.exports = {
 
     login: (req, res) => {
@@ -154,6 +165,25 @@ module.exports = {
 
      getUserFullName: (req, res) => {
 
+     },
+
+     uploadPhoto: (req, res) => {
+        data = {};
+        
+        let file = req.file('avatar');
+        file.upload({
+            dirname: '../../uploads/photos',
+        }, function onUploadComplete (err, uploadedFile) {
+                if(err) return res.serverError(err);
+                data.id = req.current_user.id;
+                data.avatar = uploadedFile[0].fd;
+                UserService.updateUser(data, (error, updatedUser) => {
+                    if(error) return res.serverError(err);
+                    if (updatedUser) {
+                        return res.ok(updatedUser);
+                    }
+                })
+            })
      }
 };
 

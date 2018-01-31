@@ -54,18 +54,19 @@ module.exports = {
      * Update user details
      */
     updateUser: (data, callback) => {
+        console.log(data)
         Users.update({
             id: data.id
         }, data).then((response) => {
-            let result = response.reduce((users, user) => {
-                if(user in users) {
-                    users[user]++;
-                } else {
-                    users[user] = 1;
-                }
-                return users;
-            });
-            callback(result);
+                let result = response.reduce((users, user) => {
+                    if(user in users) {
+                        users[user]++;
+                    } else {
+                        users[user] = 1;
+                    }
+                    return users;
+                });
+                callback(null, result);
         }).catch((err) => {
             callback(err, null);
         })
