@@ -8,7 +8,23 @@
 module.exports = {
 
   attributes: {
-
+  	title: {
+  		type: 'string',
+  		required: true,
+  	},
+  	type: {
+  		type: 'string',
+  		required: true,
+  	},
+  	score: {
+  		type: 'number'
+  	},
+  	time: {
+  		type: 'number',
+  	},
+  	author: {
+  		model: 'Users'
+  	},
   }
 };
 
