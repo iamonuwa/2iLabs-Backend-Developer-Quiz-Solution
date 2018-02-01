@@ -5,6 +5,8 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 let cloudinary = require('cloudinary');
+let passport = require('passport');
+
 cloudinary.config({ 
   cloud_name: process.env.CLOUD_NAME || 'iamonuwa', 
   api_key: process.env.API_KEY || '', 

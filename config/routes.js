@@ -67,4 +67,5 @@ module.exports.routes = {
 
   'POST /login': 'UsersController.login',
   'POST /register': 'UsersController.create',
+  'POST /facebook': 'UsersController.facebook'
 };
