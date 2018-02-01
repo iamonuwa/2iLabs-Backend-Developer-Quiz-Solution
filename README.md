@@ -27,7 +27,7 @@ Available endpoints includes
     2. [x] GET /users/:id -> Fetch a particular user. (Private).
     3. [x] PATCH /users/:id -> Update an existing user. (Private).
     4. [x] DELETE /users/:id -> Remove a user account. (Private).
-    5. [] POST /facebook -> authenticate using facebook. (Public)
+    5. [ ] POST /facebook -> authenticate using facebook. (Public)
     6. [x] POST /login -> Login using email and password. (Public)
     7. [x] POST /users/upload -> Upload a user profile picture. (Private).
     8. [x] POST /register -> Register new account with email and password. (Public)
