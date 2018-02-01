@@ -61,10 +61,14 @@ module.exports.policies = {
     'create': ['isAuthorized'],
     'update': ['isAuthorized'],
     'index': ['isAuthorized'],
+    'find': ['isAuthorized'],
+    'destroy': ['isAuthorized'],
   },
   'TopicsController': {
     'create': ['isAuthorized'],
     'update': ['isAuthorized'],
     'index': ['isAuthorized'],
+    'find': ['isAuthorized'],
+    'destroy': ['isAuthorized'],
   }
 };

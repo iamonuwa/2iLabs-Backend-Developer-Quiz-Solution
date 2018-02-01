@@ -7,6 +7,13 @@
 
 module.exports = {
 	
+	/**
+     * Fetch all Topics
+     * 
+     * @description 
+     * @param req
+     * @returns res
+     */
 	index: (req, res) => {
 		TopicService.listAll((err, foundTopics) => {
 			if(err) return res.notFound(err);
@@ -17,6 +24,14 @@ module.exports = {
 			}
 		})
 	},
+
+	/**
+     * Create new topic
+     * 
+     * @description
+     * @param req
+     * @returns res
+     */
 
 	create: (req, res) => {
 		let allowedParamters = [
@@ -34,7 +49,13 @@ module.exports = {
 			}
 		})
 	},
-
+	/**
+     * Update existing topic
+     * 
+     * @description 
+     * @param req
+     * @returns res
+     */
 	update: (req, res) => {
 		let allowedParamters = [
 			'title',
@@ -58,6 +79,13 @@ module.exports = {
 		})
 	},
 
+	/**
+     * Remove a topic
+     * 
+     * @description 
+     * @param req
+     * @returns res
+     */
 	destroy: (req, res) => {
 		let user = req.param('id');
         TopicService.listOne(user, (err, foundTopic) => {

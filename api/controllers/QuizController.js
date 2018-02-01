@@ -7,6 +7,13 @@
 
 module.exports = {
 	
+	/**
+     * Fetch all Quiz
+     * 
+     * @description 
+     * @param req
+     * @returns res
+     */
 	index: (req, res) => {
 		QuizService.listAll((err, foundQuiz) => {
 			if(err) return res.notFound(err);
@@ -18,6 +25,13 @@ module.exports = {
 		})
 	},
 
+	/**
+     * Create new quiz
+     * 
+     * @description
+     * @param req
+     * @returns res
+     */
 	create: (req, res) => {
 		let allowedParamters = [
 			'title',
@@ -44,6 +58,13 @@ module.exports = {
 		})
 	},
 
+	/**
+     * Update existing quiz
+     * 
+     * @description 
+     * @param req
+     * @returns res
+     */
 	update: (req, res) => {
 		let allowedParamters = [
 			'title',
@@ -76,6 +97,13 @@ module.exports = {
 		});
 	},
 
+	/**
+     * Remove a quiz
+     * 
+     * @description 
+     * @param req
+     * @returns res
+     */
 	destroy: (req, res) => {
 		let user = req.param('id');
         QuizService.listOne(user, (err, foundQuiz) => {
