@@ -5,12 +5,12 @@ This is just an MVP of the application. I had to build it fast and accurate.
 
 To develop such application under the given timeline, I had to use 
 1. Sails JS - a NodeJS Framework.
-2. MonogDB - a NoSQL Database
+2. MongoDB - a NoSQL Database
 3. Cloudinary - For Image Uploads and Management.
 
-I used the MVC architechture to develop this application. 
+I used the MVC architecture to develop this application. 
 
-I implemented JWT to enable the api know who is currently logged in on the app to serve the user's requests.
+I implemented JWT to enable the API to know who is currently logged in on the app to serve the user's requests.
 
 Most of the endpoints are protected (i.e. You need to be logged in to view the page).
 
