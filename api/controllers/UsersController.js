@@ -161,7 +161,6 @@ module.exports = {
                 if(err) return res.serverError(err);
                 let avatar = uploadedFile[0].fd;
                 cloudinary.uploader.upload(avatar, (result) => {
-                    console.log(result);
                     data.avatar = result.url;
                     data.id = req.current_user.id;
                     UserService.updateUser(data, (error, updatedUser) => {

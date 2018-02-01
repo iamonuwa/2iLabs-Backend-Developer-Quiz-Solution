@@ -21,6 +21,9 @@ Available endpoints includes
 [x] GET /users/:id -> Fetch a particular user.
 [x] PATCH /users/:id -> Update an existing user.
 [x] DELETE /users/:id -> Remove a user account.
+[] POST /facebook -> authenticate using facebook.
+[x] POST /login -> Login using email and password.
+[x] POST /register -> Register new account with email and password.
 
 2. Quiz
 [x] GET /quiz -> Fetch all quiz.
